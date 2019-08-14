@@ -11,6 +11,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 " 函数快速检索（前端开发可以不配置）
 Plugin 'tacahiroy/ctrlp-funky'
+Bundle 'ervandew/supertab'
 
 " js 全家桶
 Plugin 'isRuslan/vim-es6'
@@ -45,6 +46,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-airline/vim-airline'
 "搜索快乐就完事了
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'shawncplus/phpcomplete.vim'
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -69,6 +71,16 @@ colorscheme dracula
 " autocmd vimenter * NERDTree
 " Stick this in your vimrc to open NERDTree with Ctrl+n (you can set whatever key you want):
 map <C-n> :NERDTreeToggle<CR>
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -105,19 +117,21 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let mapleader = " "
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-inoremap jk <esc> 
-inoremap <esc> <nop>
+" inoremap jj <esc> 
+" inoremap <esc> <nop>
+inoremap jk <Esc>
+inoremap <Esc> <NOP>
 " iabbrev 缩写
 iabbrev 305 305737657@qq.com 
 iabbrev a305 a305737657 
 " setting arrow 
-inoremap hh <LEFT>
-inoremap ll <RIGHT>
-inoremap jj <UP>
-inoremap kk <DOWN>
+"inoremap hh <LEFT>
+"inoremap ll <RIGHT>
+"inoremap jj <UP>
+"inoremap kk <DOWN>
 
 " base Config
-set nu "display line number 
+set relativenumber "display line number 
 set tabstop=2       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
@@ -125,6 +139,7 @@ set tabstop=2       " The width of a TAB is set to 4.
 set shiftwidth=2    " Indents will have a width of 4
 set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
+set paste
 " 
 set guifont=Monaco:h13
 set ic
